@@ -2,6 +2,7 @@ import eslint from '@eslint/js';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
+import reactPlugin from 'eslint-plugin-react';
 
 export default tseslint.config(
   {
@@ -10,11 +11,24 @@ export default tseslint.config(
   eslint.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   eslintPluginPrettierRecommended, // This adds Prettier integration
+  // Add React plugin configuration
+  {
+    plugins: {
+      react: reactPlugin,
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+  },
+
   {
     languageOptions: {
       globals: {
         ...globals.node,
         ...globals.jest,
+        ...globals.browser, // Add browser globals for React
       },
       sourceType: 'commonjs',
       parserOptions: {
@@ -25,12 +39,20 @@ export default tseslint.config(
   },
   {
     rules: {
-      '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-floating-promises': 'warn',
-      '@typescript-eslint/no-unsafe-argument': 'warn',
       'prettier/prettier': ['error', { endOfLine: 'auto' }], // Configure Prettier
-      '@typescript-eslint/require-await': 'off',
       '@typescript-eslint/prefer-nullish-coalescing': 'error',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+      '@typescript-eslint/strict-boolean-expressions': [
+        'error',
+        {
+          allowString: false,
+          allowNumber: false,
+          allowNullableObject: false,
+        },
+      ],
     },
   },
 );
