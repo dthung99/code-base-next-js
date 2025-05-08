@@ -1,7 +1,10 @@
 // sections/Layout/Layout.tsx
+'use client';
+
 import { Box, Stack } from '@mui/material';
-import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 import Footer from './Footer';
+import Topbar from './Topbar';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -14,7 +17,8 @@ const Layout = ({ children, navbarPosition = 'left' }: LayoutProps) => {
       minHeight={'100vh'}
       flexDirection={navbarPosition === 'left' ? 'row' : 'column'}
     >
-      <Navbar position={navbarPosition} />
+      {navbarPosition === 'top' && <Topbar />}
+      {navbarPosition === 'left' && <Sidebar />}
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         {children}
       </Box>

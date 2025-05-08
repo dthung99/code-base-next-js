@@ -1,8 +1,9 @@
 // src/theme/palette.ts
 import { PaletteOptions } from '@mui/material/styles';
+import { ThemeMode } from '@/constants/theme';
 
-// Define your color palette
-const palette: PaletteOptions = {
+// Define light mode palette
+const lightPalette: PaletteOptions = {
   mode: 'light',
   primary: {
     main: '#2563eb', // Blue
@@ -54,7 +55,7 @@ const palette: PaletteOptions = {
   },
   background: {
     default: '#f9fafb',
-    paper: '#ffffff',
+    paper: '#dddddd',
   },
   text: {
     primary: '#111827',
@@ -64,4 +65,72 @@ const palette: PaletteOptions = {
   divider: '#e5e7eb',
 };
 
-export default palette;
+// Define dark mode palette
+const darkPalette: PaletteOptions = {
+  mode: 'dark',
+  primary: {
+    main: '#60a5fa', // Lighter blue for dark mode
+    light: '#93c5fd',
+    dark: '#3b82f6',
+    contrastText: '#000000',
+  },
+  secondary: {
+    main: '#a78bfa', // Lighter purple for dark mode
+    light: '#c4b5fd',
+    dark: '#8b5cf6',
+    contrastText: '#000000',
+  },
+  error: {
+    main: '#f87171', // Lighter red for dark mode
+    light: '#fca5a5',
+    dark: '#ef4444',
+    contrastText: '#000000',
+  },
+  warning: {
+    main: '#fbbf24', // Lighter amber for dark mode
+    light: '#fcd34d',
+    dark: '#f59e0b',
+    contrastText: '#000000',
+  },
+  info: {
+    main: '#38bdf8', // Lighter sky for dark mode
+    light: '#7dd3fc',
+    dark: '#0ea5e9',
+    contrastText: '#000000',
+  },
+  success: {
+    main: '#34d399', // Lighter emerald for dark mode
+    light: '#6ee7b7',
+    dark: '#10b981',
+    contrastText: '#000000',
+  },
+  grey: {
+    50: '#111827',
+    100: '#1f2937',
+    200: '#374151',
+    300: '#4b5563',
+    400: '#6b7280',
+    500: '#9ca3af',
+    600: '#d1d5db',
+    700: '#e5e7eb',
+    800: '#f3f4f6',
+    900: '#f9fafb',
+  },
+  background: {
+    default: '#111827',
+    paper: '#1f2937',
+  },
+  text: {
+    primary: '#f9fafb',
+    secondary: '#e5e7eb',
+    disabled: '#6b7280',
+  },
+  divider: '#374151',
+};
+
+// Define a function to get palette based on mode
+const getPalette = (mode: ThemeMode): PaletteOptions => {
+  return mode === ThemeMode.LIGHT ? lightPalette : darkPalette;
+};
+
+export default getPalette;

@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
 
-export default function Home() {
+export default async function Home() {
+  // Simulate a delay for loading
   return (
     <Box color="secondary">
       <Box color="primary"> Test</Box>

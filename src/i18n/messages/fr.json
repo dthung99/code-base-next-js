@@ -1,0 +1,19 @@
+{
+  "common": {
+    "title": "Mon Application",
+    "description": "Bienvenue sur mon application",
+    "buttons": {
+      "submit": "Soumettre",
+      "cancel": "Annuler"
+    },
+    "navigation": {
+      "home": "Accueil",
+      "about": "À propos",
+      "contact": "Contact"
+    }
+  },
+  "home": {
+    "welcome": "Bienvenue sur notre plateforme",
+    "getStarted": "Commencer maintenant"
+  }
+}

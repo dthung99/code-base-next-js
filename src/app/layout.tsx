@@ -1,15 +1,10 @@
-import { Roboto } from 'next/font/google';
 import type { Metadata } from 'next';
-import './globals.css';
-import CustomThemeProvider from '@/providers/CustomThemeProvider';
 import Layout from '@/sections/Layout';
-
-const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-roboto',
-});
+import { CustomThemeProvider } from '@/providers';
+import { cookies } from 'next/headers';
+import { DEFAULT_THEME, THEME_COOKIE_KEY, ThemeMode } from '@/constants/theme';
+import { NextIntlClientProvider } from 'next-intl';
+import { LanguageMessages } from '@/i18n/types';
 
 export const metadata: Metadata = {
   title: 'Next.js Codebase',
@@ -19,16 +14,31 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Get the theme preference from cookies server-side
+  const cookieStore = await cookies();
+  const themeCookie = cookieStore.get(THEME_COOKIE_KEY);
+
+  // Extract the value and cast it safely
+  let initialTheme = DEFAULT_THEME; // Default
+
+  if (themeCookie && themeCookie.value) {
+    const cookieValue = themeCookie.value as ThemeMode;
+    // Ensure the value is a valid ThemeMode
+    if (Object.values(ThemeMode).includes(cookieValue)) {
+      initialTheme = cookieValue;
+    }
+  }
+
   return (
-    <html lang="en" className={roboto.variable}>
-      <body>
-        <CustomThemeProvider>
-          <Layout navbarPosition="top">{children}</Layout>
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning>
+        <CustomThemeProvider initialTheme={initialTheme}>
+          <Layout navbarPosition="left">{children}</Layout>
         </CustomThemeProvider>
       </body>
     </html>
