@@ -1,10 +1,12 @@
 // sections/Layout/Sidebar.tsx
 'use client';
 
-import ThemeSelector from '@/components/Layout/ThemeSelector';
-import { Box, Drawer, Toolbar, Typography } from '@mui/material';
+import { LanguageSelector, ThemeSelector } from '@/components/Layout';
+import { useLanguage } from '@/providers';
+import { Box, Drawer, Stack, Toolbar, Typography } from '@mui/material';
 
 const Sidebar = () => {
+  const { t } = useLanguage();
   const drawerWidth = 240;
 
   return (
@@ -20,10 +22,13 @@ const Sidebar = () => {
       }}
     >
       <Toolbar>
-        <Typography variant="h6" component="div">
-          Your App Name
-        </Typography>
-        <ThemeSelector />
+        <Stack spacing={5}>
+          <Typography variant="h6" component="div">
+            {t.common.title}
+          </Typography>
+          <ThemeSelector />
+          <LanguageSelector />
+        </Stack>
       </Toolbar>
       <Box sx={{ overflow: 'auto' }}>
         {/* Add your navigation items here */}

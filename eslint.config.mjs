@@ -46,6 +46,9 @@ export default tseslint.config(
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
       '@typescript-eslint/require-await': ['off'],
+      'no-console': 'error', // Disallow the use of console
+      // 'no-alert': 'error', // Disallow the use of alert, confirm, and prompt
+      '@typescript-eslint/no-explicit-any': 'off', // Allow the use of any type
     },
   },
 );

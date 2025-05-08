@@ -1,18 +1,10 @@
 // src/constants/locales.ts
-export enum Locale {
-  ENGLISH = 'en',
-  FRENCH = 'fr',
-  SPANISH = 'es',
-  // Add more languages as needed
+// CHANGING THIS REQUIRES CHANGING BOTH THE CLASS AND THE FILE NAME OF THE DICTIONARY
+export enum Language {
+  EN = 'EN',
+  VI = 'VI',
 }
 
-export const DEFAULT_LOCALE = Locale.ENGLISH;
+export const DEFAULT_LOCALE = Language.EN;
 
-export const LOCALES = [
-  { code: Locale.ENGLISH, name: 'English', flag: '🇺🇸' },
-  { code: Locale.FRENCH, name: 'Français', flag: '🇫🇷' },
-  { code: Locale.SPANISH, name: 'Español', flag: '🇪🇸' },
-  // Add more languages as needed
-];
-
-export const LOCALE_COOKIE_KEY = 'NEXT_LOCALE';
+export const LOCALE_COOKIE_KEY = 'language';
