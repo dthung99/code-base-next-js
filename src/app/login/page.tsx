@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 import { getSSRTranslation } from '@/locales/getSSRTranslation';
 
 export const metadata: Metadata = {
-  title: 'Login - My App',
+  title: 'Login',
   description: 'Login to access your account',
 };
 

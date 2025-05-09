@@ -19,6 +19,10 @@ export const VI: Dictionary = {
       light: 'Sáng',
       dark: 'Tối',
     },
+    underDevelopment: {
+      title: 'Đang Phát Triển',
+      message: 'Tính năng này sẽ sớm ra mắt',
+    },
   },
   home: {
     welcome: 'Chào mừng đến với nền tảng của chúng tôi',

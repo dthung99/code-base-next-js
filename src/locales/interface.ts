@@ -18,6 +18,10 @@ export interface Dictionary {
       light: string;
       dark: string;
     };
+    underDevelopment: {
+      title: string;
+      message: string;
+    };
   };
   home: {
     welcome: string;

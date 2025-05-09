@@ -19,6 +19,10 @@ export const EN: Dictionary = {
       light: 'Light',
       dark: 'Dark',
     },
+    underDevelopment: {
+      title: 'Under Development',
+      message: 'This feature is coming soon',
+    },
   },
   home: {
     welcome: 'Welcome to our platform',

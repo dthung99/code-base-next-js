@@ -17,6 +17,7 @@ import {
   CircularProgress,
 } from '@mui/material';
 import { useLanguage } from '@/providers';
+import { API_ENDPOINTS, getApiUrl } from '@/constants/endpoints';
 
 interface FormData {
   email: string;
@@ -68,27 +69,6 @@ export default function LoginForm() {
       }
     } catch {
       setError('An error occurred during login. Please try again.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleGoogleLogin = async () => {
-    setLoading(true);
-    setError(null);
-
-    try {
-      // Here you would integrate with Google OAuth
-      // For example: window.location.href = '/api/auth/google';
-      // Or use a library like next-auth
-
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // For demo purposes
-      alert('Google login would redirect to OAuth flow');
-    } catch {
-      setError('Failed to login with Google');
     } finally {
       setLoading(false);
     }
@@ -175,10 +155,10 @@ export default function LoginForm() {
       </Box>
 
       <Button
+        href={getApiUrl(API_ENDPOINTS.AUTH.GOOGLE_LOGIN)}
         fullWidth
         variant="outlined"
         startIcon={<GoogleIcon />}
-        onClick={void handleGoogleLogin}
         disabled={loading}
         sx={{ mb: 2 }}
       >
